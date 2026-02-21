@@ -1,0 +1,48 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify folder structure
+        run: |
+          echo "Checking monorepo structure..."
+          dirs=(
+            "apps/frontend"
+            "apps/backend"
+            "infra/docker"
+            "infra/k8s"
+            "infra/traefik"
+            "iam/keycloak/themes"
+            "iam/keycloak/realms"
+            "iam/ldap"
+            "iam/scim"
+            "monitoring/grafana"
+            "monitoring/loki"
+            "monitoring/prometheus"
+            "docs/architecture"
+            "docs/adr"
+          )
+          for dir in "${dirs[@]}"; do
+            if [ -d "$dir" ]; then
+              echo "✅ $dir exists"
+            else
+              echo "❌ $dir missing"
+              exit 1
+            fi
+          done
+          echo "All directories verified."
+
+      - name: Check README
+        run: |
+          [ -f README.md ] && echo "✅ README.md found" || (echo "❌ README.md missing" && exit 1)
