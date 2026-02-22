@@ -1,7 +1,22 @@
 services:
+  traefik:
+    image: traefik:v2.11
+    container_name: iam-traefik
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ../traefik/traefik.yml:/traefik.yml:ro
+      - letsencrypt:/letsencrypt
+    networks:
+      - iam-network
+
   postgres:
     image: postgres:15
     container_name: iam-postgres
+    restart: unless-stopped
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
@@ -19,14 +34,15 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:23.0
     container_name: iam-keycloak
+    restart: unless-stopped
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: keycloak_secret
+      KC_HOSTNAME: keycloak.3.25.125.195.sslip.io
       KC_HOSTNAME_STRICT: "false"
-      KC_HOSTNAME_STRICT_HTTPS: "false"
-      KC_HOSTNAME_STRICT_BACKCHANNEL: "false"
+      KC_HOSTNAME_STRICT_HTTPS: "true"
       KC_HTTP_ENABLED: "true"
       KC_PROXY: edge
       KC_LOG_LEVEL: info
@@ -37,8 +53,12 @@ services:
     command: start-dev --import-realm
     volumes:
       - ../../iam/keycloak/realms:/opt/keycloak/data/import
-    ports:
-      - "8080:8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.keycloak.rule=Host(`keycloak.3.25.125.195.sslip.io`)"
+      - "traefik.http.routers.keycloak.entrypoints=websecure"
+      - "traefik.http.routers.keycloak.tls.certresolver=letsencrypt"
+      - "traefik.http.services.keycloak.loadbalancer.server.port=8080"
     depends_on:
       postgres:
         condition: service_healthy
@@ -51,3 +71,4 @@ networks:
 
 volumes:
   postgres_data:
+  letsencrypt:

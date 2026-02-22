@@ -1,0 +1,52 @@
+{
+  "realm": "iam-platform",
+  "enabled": true,
+  "displayName": "IAM Platform",
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "roles": {
+    "realm": [
+      {"name": "app-admin", "description": "Full administrative access"},
+      {"name": "app-user", "description": "Standard user access"},
+      {"name": "app-readonly", "description": "Read only access"}
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "iam-web-app",
+      "name": "IAM Web Application",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "aCmuT56JRQkNGlfzUvqLhTYo74uKWlIG",
+      "redirectUris": ["*"],
+      "webOrigins": ["*"],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser",
+      "email": "testuser@iamplatform.dev",
+      "firstName": "Test",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Test@1234",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["app-user"]
+    }
+  ]
+}
