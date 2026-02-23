@@ -65,6 +65,22 @@ services:
     networks:
       - iam-network
 
+  frontend:
+    image: nginx:alpine
+    container_name: iam-frontend
+    restart: unless-stopped
+    volumes:
+      - ../../apps/frontend/iam-web-app/dist:/usr/share/nginx/html:ro
+      - ../nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`app.3.25.125.195.sslip.io`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+    networks:
+      - iam-network
+
 networks:
   iam-network:
     driver: bridge
