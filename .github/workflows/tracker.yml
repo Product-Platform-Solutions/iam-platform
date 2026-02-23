@@ -1,0 +1,86 @@
+name: Track Event
+
+on:
+  push:
+    branches:
+      - 'feat/**'
+      - 'fix/**'
+      - 'hotfix/**'
+      - 'chore/**'
+      - develop
+      - main
+  pull_request:
+    types: [opened, closed, reopened, ready_for_review]
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types: [completed]
+
+jobs:
+  track:
+    name: Track to Ticket System
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract Event Info
+        id: info
+        run: |
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          COMMIT="${GITHUB_SHA:0:7}"
+          AUTHOR="${GITHUB_ACTOR}"
+          REPO="${GITHUB_REPOSITORY}"
+          EVENT="${GITHUB_EVENT_NAME}"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          TICKET_ID=$(echo "$BRANCH" | grep -oP '[A-Z]+-[0-9]+' || echo "")
+
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+          echo "repo=$REPO" >> $GITHUB_OUTPUT
+          echo "event=$EVENT" >> $GITHUB_OUTPUT
+          echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "ticket_id=$TICKET_ID" >> $GITHUB_OUTPUT
+
+      - name: Determine Status
+        id: status
+        run: |
+          EVENT="${{ github.event_name }}"
+          PR_ACTION="${{ github.event.action }}"
+          PR_MERGED="${{ github.event.pull_request.merged }}"
+          CI_CONCLUSION="${{ github.event.workflow_run.conclusion }}"
+
+          if [ "$EVENT" = "push" ]; then
+            STATUS="in_progress"
+          elif [ "$EVENT" = "pull_request" ] && [ "$PR_ACTION" = "opened" ]; then
+            STATUS="in_review"
+          elif [ "$EVENT" = "pull_request" ] && [ "$PR_MERGED" = "true" ]; then
+            STATUS="done"
+          elif [ "$EVENT" = "workflow_run" ] && [ "$CI_CONCLUSION" = "success" ]; then
+            STATUS="ci_passed"
+          elif [ "$EVENT" = "workflow_run" ] && [ "$CI_CONCLUSION" = "failure" ]; then
+            STATUS="ci_failed"
+          else
+            STATUS="updated"
+          fi
+
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+
+      - name: Send to n8n
+        run: |
+          curl -s -X POST "${{ secrets.N8N_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"event\": \"${{ steps.info.outputs.event }}\",
+              \"status\": \"${{ steps.status.outputs.status }}\",
+              \"branch\": \"${{ steps.info.outputs.branch }}\",
+              \"commit\": \"${{ steps.info.outputs.commit }}\",
+              \"author\": \"${{ steps.info.outputs.author }}\",
+              \"repo\": \"${{ steps.info.outputs.repo }}\",
+              \"ticket_id\": \"${{ steps.info.outputs.ticket_id }}\",
+              \"timestamp\": \"${{ steps.info.outputs.timestamp }}\",
+              \"pr_url\": \"${{ github.event.pull_request.html_url }}\",
+              \"pr_title\": \"${{ github.event.pull_request.title }}\"
+            }"
+          echo "✅ Event sent to n8n tracker"
