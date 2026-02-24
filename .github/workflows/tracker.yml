@@ -69,7 +69,7 @@ jobs:
 
       - name: Send to n8n
         run: |
-          curl -sk -X POST "${{ secrets.N8N_WEBHOOK_URL }}" \
+          curl -sk -X POST "${{ secrets.TRACKER_API_URL }}" \
             -H "Content-Type: application/json" \
             -d "{
               \"event\": \"${{ steps.info.outputs.event }}\",
