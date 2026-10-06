@@ -1,0 +1,18 @@
+# Local development stack: Keycloak only, no Traefik / Let's Encrypt / real hostname.
+# Run from the repo root:
+#   docker compose -f infra/docker/docker-compose.local.yml up
+# Keycloak: http://localhost:8080  (admin / admin, local only)
+# Uses the same image as production (infra/docker/docker-compose.yml) so behaviour matches.
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0
+    container_name: iam-keycloak-local
+    command: start-dev --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HEALTH_ENABLED: "true"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../../iam/keycloak/realms:/opt/keycloak/data/import
