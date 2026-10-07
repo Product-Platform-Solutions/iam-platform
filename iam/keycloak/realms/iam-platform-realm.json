@@ -9,6 +9,15 @@
   "resetPasswordAllowed": true,
   "editUsernameAllowed": false,
   "bruteForceProtected": true,
+  "webAuthnPolicyPasswordlessRpEntityName": "IAM Platform",
+  "webAuthnPolicyPasswordlessSignatureAlgorithms": ["ES256", "RS256"],
+  "webAuthnPolicyPasswordlessRpId": "",
+  "webAuthnPolicyPasswordlessAttestationConveyancePreference": "not specified",
+  "webAuthnPolicyPasswordlessAuthenticatorAttachment": "not specified",
+  "webAuthnPolicyPasswordlessRequireResidentKey": "Yes",
+  "webAuthnPolicyPasswordlessUserVerificationRequirement": "preferred",
+  "webAuthnPolicyPasswordlessCreateTimeout": 0,
+  "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister": false,
   "roles": {
     "realm": [
       {"name": "app-admin", "description": "Full administrative access"},
@@ -22,12 +31,14 @@
       "name": "IAM Web Application",
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
-      "secret": "aCmuT56JRQkNGlfzUvqLhTYo74uKWlIG",
       "redirectUris": ["*"],
       "webOrigins": ["*"],
       "standardFlowEnabled": true,
-      "directAccessGrantsEnabled": true,
-      "publicClient": false,
+      "directAccessGrantsEnabled": false,
+      "publicClient": true,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
       "protocol": "openid-connect"
     }
   ],

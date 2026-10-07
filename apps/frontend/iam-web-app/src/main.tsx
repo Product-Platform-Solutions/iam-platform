@@ -9,6 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     authClient={keycloak}
     initOptions={{
       onLoad: 'login-required',
+      pkceMethod: 'S256',
       checkLoginIframe: false,
     }}
   >

@@ -26,3 +26,16 @@ Written 2026-10-06 after a repo health check on `develop`.
 1. Get local login working with `testuser` (fix item 1 if needed).
 2. Decide and record the Keycloak upgrade path (item 2).
 3. Enable the WebAuthn passwordless policy, register a passkey for `testuser`, and match what you see against the registration-ceremony diagram from Day 1.
+
+## Decisions recorded (Period 4 lab, 2026-10-07)
+- **Keycloak upgrade: yes.** Local stack now runs 26.6.1 (passkeys need 26.4+). If the image tag is not found, use 26.4.0. Production compose still pins 23.0 until the upgrade is planned. Admin env vars changed to `KC_BOOTSTRAP_ADMIN_*` (the old `KEYCLOAK_ADMIN*` names are deprecated in 26.x).
+- **Support every passkey mode; the organisation decides.** Realm defaults are in `iam/keycloak/realms/iam-platform-realm.json` and an org admin can change them in Keycloak (Authentication > Policies > Webauthn Passwordless Policy):
+  - Authenticator attachment: `not specified` (platform and cross-platform both allowed).
+  - Discoverable credential (resident key): `Yes`, so users do not have to type a username first.
+  - User verification: `preferred` as a neutral default. Orgs that need AAL3-style assurance would set `required`.
+- **Backlog, not done:** an in-product settings screen so an org admin can change these without opening Keycloak's console.
+- **Client fixed:** `iam-web-app` is now a public client with PKCE (S256); the committed client secret is removed and the direct password grant is off. Frontend sends `pkceMethod: 'S256'`.
+- **Unverified, check when Docker runs:**
+  1. The `webAuthnPolicyPasswordless*` field names in the realm file. If the import errors, the log names the bad field.
+  2. Passkeys are not enabled by default in 26.4+. Turn them on in Webauthn Passwordless Policy, then use Realm settings > Action > Partial export to find the exact JSON field and add it to the realm file.
+  3. Redirect URIs and web origins are still `*` (local only).

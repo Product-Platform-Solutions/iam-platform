@@ -2,15 +2,16 @@
 # Run from the repo root:
 #   docker compose -f infra/docker/docker-compose.local.yml up
 # Keycloak: http://localhost:8080  (admin / admin, local only)
-# Uses the same image as production (infra/docker/docker-compose.yml) so behaviour matches.
+# Local stack runs Keycloak 26.6.1 (passkeys need 26.4+). Production (infra/docker/docker-compose.yml) still
+# pins 23.0 until the upgrade is planned. If the tag is not found, try 26.4.0.
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:23.0
+    image: quay.io/keycloak/keycloak:26.6.1
     container_name: iam-keycloak-local
     command: start-dev --import-realm
     environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
       KC_HEALTH_ENABLED: "true"
     ports:
       - "8080:8080"
