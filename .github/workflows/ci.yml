@@ -46,3 +46,67 @@ jobs:
       - name: Check README
         run: |
           [ -f README.md ] && echo "✅ README.md found" || (echo "❌ README.md missing" && exit 1)
+
+  frontend:
+    name: Frontend build and lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/frontend/iam-web-app
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/frontend/iam-web-app/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # Reported, not blocking yet: the baseline has known findings (14 at last check,
+      # 10 high). Make this blocking once they are fixed (tracked in the Phase 0 plan).
+      - name: Dependency audit (non-blocking for now)
+        continue-on-error: true
+        run: npm audit --audit-level=high
+
+  compose-config:
+    name: Compose files render
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Local compose
+        run: docker compose -f infra/docker/docker-compose.local.yml config -q
+
+      - name: Production compose (with the example env file)
+        run: docker compose --env-file infra/docker/.env.example -f infra/docker/docker-compose.yml config -q
+
+      - name: Production compose fails without secrets
+        run: |
+          if docker compose -f infra/docker/docker-compose.yml config -q 2>/dev/null; then
+            echo "Production compose rendered without required secrets set"; exit 1
+          fi
+
+  realm-json:
+    name: Realm export is valid JSON
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Parse realm files
+        run: |
+          for f in iam/keycloak/realms/*.json; do
+            python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" && echo "OK $f"
+          done
