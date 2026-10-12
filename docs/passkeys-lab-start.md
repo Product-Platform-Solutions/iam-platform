@@ -39,3 +39,10 @@ Written 2026-10-06 after a repo health check on `develop`.
   1. The `webAuthnPolicyPasswordless*` field names in the realm file. If the import errors, the log names the bad field.
   2. Passkeys are not enabled by default in 26.4+. Turn them on in Webauthn Passwordless Policy, then use Realm settings > Action > Partial export to find the exact JSON field and add it to the realm file.
   3. Redirect URIs and web origins are still `*` (local only).
+
+## Verified against a running Keycloak 26.6.1 (2026-10-13)
+- A partial export of the live realm matches the committed `webAuthnPolicyPasswordless*` and `otpPolicy*` values, so those field names are correct and the import applied them.
+- Login (password, then TOTP via FreeOTP) works through the PKCE client on `http://localhost:5173`.
+- keycloak-js 21 looped on Keycloak 26 (the `iss` parameter was appended to `redirect_uri` on every redirect); fixed by upgrading to keycloak-js 26.2.4.
+- The export contains no passkey on/off field and the browser flow is unchanged (`webauthn-authenticator` DISABLED inside Conditional 2FA). Passkey registration and login are still untested.
+- Keycloak skips realm import when the realm already exists, so edits to the realm JSON only apply on a fresh container.
