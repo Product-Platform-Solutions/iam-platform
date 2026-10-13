@@ -186,7 +186,22 @@ export async function login(overrides = {}, { username = config.user, password =
             'Enrol once and set TEST_TOTP_SECRET, or run with TOTP_AUTO_ENROLL=1 against a fresh provider.',
         );
       }
-      const shown = /id="kc-totp-secret-key"[^>]*>([^<]+)</.exec(r.text)?.[1];
+      const SECRET_RE = /id="kc-totp-secret-key"[^>]*>([^<]+)</;
+      let shown = SECRET_RE.exec(r.text)?.[1];
+      let enroll = enrollForm;
+      if (!shown) {
+        // Keycloak 26 shows only the QR code first; the text key is on the page behind "Unable to scan?" (id mode-manual).
+        const link = /<a\b[^>]*\bid="mode-manual"[^>]*>/i.exec(r.text)?.[0];
+        const href = link && /\bhref="([^"]*)"/i.exec(link)?.[1];
+        if (href) {
+          const mr = await followAuth(session, new URL(decodeHtml(href), r.page).href, undefined, stop);
+          if (mr.status === 200) {
+            r = mr;
+            shown = SECRET_RE.exec(r.text)?.[1];
+            enroll = parseForms(r.text).find((f) => f.has('totp') && /totpSecret/.test(r.text)) ?? enrollForm;
+          }
+        }
+      }
       if (!shown) {
         const redact = (t) => t.replace(/[A-Za-z0-9+/=_-]{16,}/g, '[REDACTED]').replace(/(?:[A-Z2-7]{4} ){3,}[A-Z2-7]{1,4}/g, '[REDACTED]').replace(/\s+/g, ' ');
         const ids = [...new Set([...r.text.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]))].filter((i) => /secret|totp|key|manual|mode|barcode|qr/i.test(i)).join(',');
@@ -197,8 +212,8 @@ export async function login(overrides = {}, { username = config.user, password =
       const secret = decodeHtml(shown).replace(/\s+/g, '');
       base32Decode(secret); // validates
       rememberSecret(secret);
-      form = enrollForm;
-      fields = { ...enrollForm.fields, totp: await nextCode(secret), userLabel: 'oidc-contract-test' };
+      form = enroll;
+      fields = { ...enroll.fields, totp: await nextCode(secret), userLabel: 'oidc-contract-test' };
     } else {
       const title = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(r.text)?.[1]?.trim() ?? '';
       throw new LoginBlocked(`login flow stopped on an unhandled page (HTTP ${r.status}, title "${decodeHtml(title).slice(0, 80)}"); a required action or consent screen is probably pending for ${username}`);
