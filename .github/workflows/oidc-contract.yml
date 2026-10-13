@@ -1,0 +1,72 @@
+name: OIDC contract tests
+
+# Runs the provider-agnostic OIDC contract suite (tests/oidc-contract) against the Keycloak reference.
+# NOTE: needs infra/docker/docker-compose.local.yml (Keycloak 26.6.1) and the realm export in iam/keycloak/realms.
+on:
+  pull_request:
+    paths:
+      - 'tests/oidc-contract/**'
+      - 'iam/keycloak/**'
+      - 'infra/docker/docker-compose.local.yml'
+      - '.github/workflows/oidc-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    name: OIDC contract tests vs Keycloak
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ISSUER: http://localhost:8080/realms/iam-platform
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tests/oidc-contract/package-lock.json
+
+      - name: Start Keycloak
+        run: docker compose -f infra/docker/docker-compose.local.yml up -d keycloak
+
+      - name: Wait for Keycloak (realm discovery document)
+        run: |
+          for i in $(seq 1 60); do
+            if curl -fsS "$ISSUER/.well-known/openid-configuration" > /dev/null; then
+              echo "Keycloak is ready after about $((i * 5)) s"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Keycloak did not become ready in 300 s" >&2
+          docker compose -f infra/docker/docker-compose.local.yml logs keycloak | tail -n 100
+          exit 1
+
+      - name: Install test dependencies
+        working-directory: tests/oidc-contract
+        run: npm ci
+
+      - name: Check tests are documented
+        working-directory: tests/oidc-contract
+        run: npm run check:docs
+
+      - name: Run contract tests
+        working-directory: tests/oidc-contract
+        env:
+          # The realm forces testuser through TOTP setup on first login; let the harness complete it.
+          TOTP_AUTO_ENROLL: '1'
+        run: npm test
+
+      - name: Keycloak logs on failure
+        if: failure()
+        run: docker compose -f infra/docker/docker-compose.local.yml logs keycloak | tail -n 200
+
+      - name: Stop Keycloak
+        if: always()
+        run: docker compose -f infra/docker/docker-compose.local.yml down -v
