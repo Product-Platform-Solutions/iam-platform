@@ -61,7 +61,23 @@ jobs:
         env:
           # The realm forces testuser through TOTP setup on first login; let the harness complete it.
           TOTP_AUTO_ENROLL: '1'
-        run: npm test
+        run: >
+          npm test --
+          --test-reporter=spec --test-reporter-destination=stdout
+          --test-reporter=tap --test-reporter-destination=results.tap
+
+      - name: Summarize results as annotations
+        if: always()
+        working-directory: tests/oidc-contract
+        run: |
+          if [ ! -f results.tap ]; then echo "::warning title=OIDC contract::no results.tap produced"; exit 0; fi
+          t=$(grep -E '^# tests ' results.tap | awk '{print $3}')
+          p=$(grep -E '^# pass ' results.tap | awk '{print $3}')
+          f=$(grep -E '^# fail ' results.tap | awk '{print $3}')
+          k=$(grep -E '^# skipped ' results.tap | awk '{print $3}')
+          echo "::notice title=OIDC contract summary::tests=$t pass=$p fail=$f skipped=$k"
+          grep -E '^\s*not ok ' results.tap | head -40 | while read -r l; do echo "::error title=OIDC contract failing test::$l"; done
+          grep -E '^\s*ok .*# SKIP' results.tap | head -40 | while read -r l; do echo "::warning title=OIDC contract skipped test::$l"; done
 
       - name: Keycloak logs on failure
         if: failure()
