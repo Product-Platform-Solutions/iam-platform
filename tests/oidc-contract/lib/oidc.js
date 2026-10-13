@@ -187,7 +187,13 @@ export async function login(overrides = {}, { username = config.user, password =
         );
       }
       const shown = /id="kc-totp-secret-key"[^>]*>([^<]+)</.exec(r.text)?.[1];
-      if (!shown) throw new LoginBlocked('TOTP enrolment page found but the manual-entry secret could not be parsed (provider theme differs from Keycloak 26 default)');
+      if (!shown) {
+        const redact = (t) => t.replace(/[A-Za-z0-9+/=_-]{16,}/g, '[REDACTED]').replace(/(?:[A-Z2-7]{4} ){3,}[A-Z2-7]{1,4}/g, '[REDACTED]').replace(/\s+/g, ' ');
+        const ids = [...new Set([...r.text.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]))].filter((i) => /secret|totp|key|manual|mode|barcode|qr/i.test(i)).join(',');
+        const i0 = r.text.search(/totpSecret/);
+        const win = redact(r.text.slice(Math.max(0, i0 - 150), i0 + 350));
+        throw new LoginBlocked(`TOTP enrolment page found but the manual-entry secret could not be parsed (provider theme differs from Keycloak 26 default). DIAG ids=[${ids}] window=${win}`);
+      }
       const secret = decodeHtml(shown).replace(/\s+/g, '');
       base32Decode(secret); // validates
       rememberSecret(secret);
