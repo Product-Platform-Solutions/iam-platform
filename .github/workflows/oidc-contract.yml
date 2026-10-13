@@ -62,9 +62,10 @@ jobs:
           # The realm forces testuser through TOTP setup on first login; let the harness complete it.
           TOTP_AUTO_ENROLL: '1'
         run: >
-          npm test --
+          node --test --test-concurrency=1 --test-timeout=900000
           --test-reporter=spec --test-reporter-destination=stdout
           --test-reporter=tap --test-reporter-destination=results.tap
+          test/*.test.js
 
       - name: Summarize results as annotations
         if: always()
