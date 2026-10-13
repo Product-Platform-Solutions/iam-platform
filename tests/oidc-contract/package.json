@@ -1,0 +1,17 @@
+{
+  "name": "oidc-contract-tests",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Provider-agnostic OpenID Connect / OAuth 2.0 contract tests. Reference target: Keycloak 26.6.1.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 --test-timeout=900000 test/*.test.js",
+    "test:mock": "node scripts/run-against-mock.js",
+    "check:docs": "node scripts/check-docs.js",
+    "lint": "node scripts/syntax-check.js"
+  },
+  "dependencies": {
+    "jose": "5.9.6"
+  }
+}
