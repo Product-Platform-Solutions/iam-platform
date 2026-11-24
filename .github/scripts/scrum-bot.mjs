@@ -360,7 +360,10 @@ async function main() {
       };
       const opt = (field, name) => field?.options?.find(o => o.name.toLowerCase().replace(/[^a-z]/g, '') === name.toLowerCase().replace(/[^a-z]/g, ''))?.id;
       for (const name of ['Backlog', 'Ready', 'In progress', 'In review', 'Done']) if (!opt(F.status, name)) errors.push(`Status option "${name}" is missing on the board.`);
-      for (const name of ['Critical', 'High', 'Medium', 'Low']) if (!opt(F.priority, name)) errors.push(`Priority option "${name}" is missing on the board.`);
+      // priority: match by name, else by position (first option is the most urgent)
+      const prioOpt = (p) => opt(F.priority, p) || F.priority?.options?.[Math.min(PRIORITIES.indexOf(p), (F.priority.options.length || 1) - 1)]?.id;
+      if (F.priority && !opt(F.priority, 'critical')) changes.push(`Priority mapped by position onto board options: ${F.priority.options.map(o => o.name).join(', ')}`);
+      if (!F.priority) errors.push('The board has no Priority single-select field.');
       for (const i of items.values()) {
         if (!i.level) continue;
         let it = board.items.get(i.n);
@@ -372,7 +375,7 @@ async function main() {
         }
         const st = opt(F.status, statusOf(i, items, state, sprint));
         if (st) await setField(it.id, F.status, { singleSelectOptionId: st }, it.vals.Status);
-        const pr = i.priority && opt(F.priority, i.priority);
+        const pr = i.priority && prioOpt(i.priority);
         if (pr) await setField(it.id, F.priority, { singleSelectOptionId: pr }, it.vals.Priority);
         if (i.start) await setField(it.id, F.start, { date: i.start }, it.vals['Start date']);
         if (i.target) await setField(it.id, F.target, { date: i.target }, it.vals['Target date']);
@@ -410,7 +413,7 @@ async function report(items, state, vel, sprint, phases, boardWrites) {
   const cur = sprint.current;
   const inSprint = cur ? sprintStories(items, cur) : [];
   const spDone = inSprint.filter(i => i.state === 'closed').reduce((a, i) => a + i.points, 0), spAll = inSprint.reduce((a, i) => a + i.points, 0);
-  const epicNames = [...new Set(inSprint.map(i => items.get(i.parent)?.title).filter(Boolean))];
+  const epicNames = [...new Set(inSprint.map(i => items.get(i.parent)?.title?.replace(/^\[P\d+\]\s*/, '')).filter(Boolean))];
   const goal = epicNames.length ? `Finish ${epicNames.slice(0, 2).join(' and ')}` : 'No stories scheduled';
   const attention = (label) => all.filter(i => i.state === 'open' && i.labels.has(label)).map(i => `#${i.n}`);
   const stale = all.filter(i => i.state === 'open' && (state.branchFor.has(i.n) || state.reviewFor.has(i.n)) && i.updatedAt && daysBetween(i.updatedAt, TODAY) > CONFIG.staleDays).map(i => `#${i.n}`);
@@ -438,6 +441,7 @@ async function report(items, state, vel, sprint, phases, boardWrites) {
     `- In progress with no activity for ${CONFIG.staleDays} days: ${line(stale)}`,
     '', '## Automation log',
     errors.length ? errors.map(e => `- Error: ${e}`).join('\n') : '- No errors.',
+    ...changes.filter(c => c.startsWith('Priority mapped')).map(c => `- ${c}`),
     `- ${changes.length} issue changes and ${boardWrites} board field updates in this run.`,
   ].join('\n');
 
