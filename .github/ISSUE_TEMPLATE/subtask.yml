@@ -1,7 +1,7 @@
 name: Sub-task
 description: An engineering step inside a story
-labels: ["type:subtask"]
-type: Task
+labels: []
+type: Sub-task
 body:
   - type: input
     id: story

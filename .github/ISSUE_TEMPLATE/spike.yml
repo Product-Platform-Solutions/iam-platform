@@ -1,0 +1,24 @@
+name: Spike
+description: A time-boxed investigation that ends in a decision or an ADR
+type: Spike
+body:
+  - type: input
+    id: epic
+    attributes: { label: Epic, description: "Epic issue number. The bot links the spike under it." }
+    validations: { required: true }
+  - type: textarea
+    id: story
+    attributes: { label: User story, value: "As a maintainer, I want ..., so that ..." }
+    validations: { required: true }
+  - type: textarea
+    id: ac
+    attributes: { label: Acceptance criteria, value: "- [ ] Given ..., when ..., then a decision is recorded in docs/adr" }
+    validations: { required: true }
+  - type: dropdown
+    id: points
+    attributes: { label: Estimate (story points), options: ["1", "2", "3", "5"] }
+    validations: { required: true }
+  - type: dropdown
+    id: priority
+    attributes: { label: Priority, options: ["Critical", "High", "Medium", "Low"] }
+    validations: { required: true }
