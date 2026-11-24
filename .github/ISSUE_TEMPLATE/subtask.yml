@@ -1,0 +1,12 @@
+name: Sub-task
+description: An engineering step inside a story
+labels: ["type:subtask"]
+type: Task
+body:
+  - type: input
+    id: story
+    attributes: { label: Story, description: "Story issue number" }
+    validations: { required: true }
+  - type: textarea
+    id: what
+    attributes: { label: What to do }
