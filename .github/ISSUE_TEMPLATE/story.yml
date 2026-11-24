@@ -1,12 +1,12 @@
 name: Story
 description: A user-facing increment inside an epic
 title: "Short outcome in plain words"
-labels: ["type:story"]
-type: Task
+labels: []
+type: Story
 body:
   - type: input
     id: epic
-    attributes: { label: Epic, description: "Epic issue number, for example #31" }
+    attributes: { label: Epic, description: "Epic issue number, for example #31. The bot links the story under it." }
     validations: { required: true }
   - type: textarea
     id: story

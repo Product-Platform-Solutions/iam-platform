@@ -1,11 +1,15 @@
 name: Epic
 description: A feature-sized piece of the roadmap, made of stories
-labels: ["type:epic"]
-type: Feature
+labels: []
+type: Epic
 body:
   - type: input
-    id: phase
-    attributes: { label: Phase, description: "P0 to P6" }
+    id: parent
+    attributes: { label: Parent, description: "Phase (initiative) issue number, for example #28. The bot links the epic and sets its milestone." }
+    validations: { required: true }
+  - type: dropdown
+    id: priority
+    attributes: { label: Priority, options: ["Critical", "High", "Medium", "Low"] }
     validations: { required: true }
   - type: textarea
     id: goal

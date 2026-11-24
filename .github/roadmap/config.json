@@ -1,0 +1,10 @@
+{
+  "defaultVelocity": 8,
+  "minVelocity": 4,
+  "maxVelocity": 20,
+  "velocityWindowDays": 28,
+  "minDaysBeforeMeasuring": 14,
+  "staleDays": 7,
+  "onTrackSlipDays": 7,
+  "atRiskSlipDays": 21
+}
