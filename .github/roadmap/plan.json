@@ -1,0 +1,1420 @@
+{
+ "velocityPointsPerWeek": 8,
+ "phases": [
+  {
+   "key": "P0",
+   "issue": 21,
+   "start": "2026-11-24",
+   "target": "2026-12-16",
+   "points": 23,
+   "epics": [
+    {
+     "n": 22,
+     "start": "2026-11-24",
+     "target": "2026-11-25",
+     "points": 2,
+     "priority": "high"
+    },
+    {
+     "n": 23,
+     "start": "2026-11-26",
+     "target": "2026-11-26",
+     "points": 1,
+     "priority": "high"
+    },
+    {
+     "n": 24,
+     "start": "2026-11-27",
+     "target": "2026-11-30",
+     "points": 4,
+     "priority": "high"
+    },
+    {
+     "n": 25,
+     "start": "2026-12-01",
+     "target": "2026-12-03",
+     "points": 3,
+     "priority": "critical"
+    },
+    {
+     "n": 26,
+     "start": "2026-12-04",
+     "target": "2026-12-11",
+     "points": 8,
+     "priority": "high"
+    },
+    {
+     "n": 27,
+     "start": "2026-12-12",
+     "target": "2026-12-16",
+     "points": 5,
+     "priority": "high"
+    }
+   ]
+  },
+  {
+   "key": "P1",
+   "issue": 28,
+   "start": "2026-12-17",
+   "target": "2027-01-27",
+   "points": 42,
+   "epics": [
+    {
+     "n": 29,
+     "start": "2026-12-17",
+     "target": "2026-12-18",
+     "points": 2,
+     "priority": "high"
+    },
+    {
+     "n": 30,
+     "start": "2026-12-19",
+     "target": "2026-12-26",
+     "points": 8,
+     "priority": "critical"
+    },
+    {
+     "n": 31,
+     "start": "2026-12-27",
+     "target": "2027-01-06",
+     "points": 11,
+     "priority": "critical"
+    },
+    {
+     "n": 32,
+     "start": "2027-01-07",
+     "target": "2027-01-11",
+     "points": 5,
+     "priority": "critical"
+    },
+    {
+     "n": 33,
+     "start": "2027-01-12",
+     "target": "2027-01-16",
+     "points": 5,
+     "priority": "critical"
+    },
+    {
+     "n": 34,
+     "start": "2027-01-17",
+     "target": "2027-01-20",
+     "points": 4,
+     "priority": "high"
+    },
+    {
+     "n": 35,
+     "start": "2027-01-21",
+     "target": "2027-01-25",
+     "points": 5,
+     "priority": "high"
+    },
+    {
+     "n": 36,
+     "start": "2027-01-26",
+     "target": "2027-01-27",
+     "points": 2,
+     "priority": "high"
+    }
+   ]
+  },
+  {
+   "key": "P2",
+   "issue": 37,
+   "start": "2027-01-28",
+   "target": "2027-03-11",
+   "points": 43,
+   "epics": [
+    {
+     "n": 38,
+     "start": "2027-01-28",
+     "target": "2027-02-02",
+     "points": 6,
+     "priority": "critical"
+    },
+    {
+     "n": 39,
+     "start": "2027-02-03",
+     "target": "2027-02-07",
+     "points": 5,
+     "priority": "high"
+    },
+    {
+     "n": 40,
+     "start": "2027-02-08",
+     "target": "2027-02-17",
+     "points": 10,
+     "priority": "high"
+    },
+    {
+     "n": 41,
+     "start": "2027-02-18",
+     "target": "2027-02-23",
+     "points": 6,
+     "priority": "high"
+    },
+    {
+     "n": 42,
+     "start": "2027-02-24",
+     "target": "2027-02-28",
+     "points": 5,
+     "priority": "high"
+    },
+    {
+     "n": 43,
+     "start": "2027-03-01",
+     "target": "2027-03-05",
+     "points": 5,
+     "priority": "medium"
+    },
+    {
+     "n": 44,
+     "start": "2027-03-06",
+     "target": "2027-03-11",
+     "points": 6,
+     "priority": "high"
+    }
+   ]
+  },
+  {
+   "key": "P3",
+   "issue": 45,
+   "start": "2027-03-12",
+   "target": "2027-04-19",
+   "points": 39,
+   "epics": [
+    {
+     "n": 46,
+     "start": "2027-03-12",
+     "target": "2027-03-19",
+     "points": 8,
+     "priority": "high"
+    },
+    {
+     "n": 47,
+     "start": "2027-03-20",
+     "target": "2027-03-24",
+     "points": 5,
+     "priority": "high"
+    },
+    {
+     "n": 48,
+     "start": "2027-03-25",
+     "target": "2027-04-03",
+     "points": 10,
+     "priority": "high"
+    },
+    {
+     "n": 49,
+     "start": "2027-04-04",
+     "target": "2027-04-08",
+     "points": 5,
+     "priority": "high"
+    },
+    {
+     "n": 50,
+     "start": "2027-04-09",
+     "target": "2027-04-14",
+     "points": 6,
+     "priority": "medium"
+    },
+    {
+     "n": 51,
+     "start": "2027-04-15",
+     "target": "2027-04-19",
+     "points": 5,
+     "priority": "high"
+    }
+   ]
+  },
+  {
+   "key": "P4",
+   "issue": 52,
+   "start": "2027-04-20",
+   "target": "2027-05-23",
+   "points": 34,
+   "epics": [
+    {
+     "n": 53,
+     "start": "2027-04-20",
+     "target": "2027-04-29",
+     "points": 10,
+     "priority": "high"
+    },
+    {
+     "n": 54,
+     "start": "2027-04-30",
+     "target": "2027-05-07",
+     "points": 8,
+     "priority": "high"
+    },
+    {
+     "n": 55,
+     "start": "2027-05-08",
+     "target": "2027-05-15",
+     "points": 8,
+     "priority": "critical"
+    },
+    {
+     "n": 56,
+     "start": "2027-05-16",
+     "target": "2027-05-23",
+     "points": 8,
+     "priority": "medium"
+    }
+   ]
+  },
+  {
+   "key": "P5",
+   "issue": 57,
+   "start": "2027-05-24",
+   "target": "2027-06-24",
+   "points": 32,
+   "epics": [
+    {
+     "n": 58,
+     "start": "2027-05-24",
+     "target": "2027-05-28",
+     "points": 5,
+     "priority": "high"
+    },
+    {
+     "n": 59,
+     "start": "2027-05-29",
+     "target": "2027-06-02",
+     "points": 5,
+     "priority": "high"
+    },
+    {
+     "n": 60,
+     "start": "2027-06-03",
+     "target": "2027-06-10",
+     "points": 8,
+     "priority": "high"
+    },
+    {
+     "n": 61,
+     "start": "2027-06-11",
+     "target": "2027-06-18",
+     "points": 8,
+     "priority": "high"
+    },
+    {
+     "n": 62,
+     "start": "2027-06-19",
+     "target": "2027-06-24",
+     "points": 6,
+     "priority": "medium"
+    }
+   ]
+  },
+  {
+   "key": "P6",
+   "issue": 63,
+   "start": "2027-06-25",
+   "target": "2027-07-23",
+   "points": 29,
+   "epics": [
+    {
+     "n": 64,
+     "start": "2027-06-25",
+     "target": "2027-06-29",
+     "points": 5,
+     "priority": "critical"
+    },
+    {
+     "n": 65,
+     "start": "2027-06-30",
+     "target": "2027-07-05",
+     "points": 6,
+     "priority": "critical"
+    },
+    {
+     "n": 66,
+     "start": "2027-07-06",
+     "target": "2027-07-10",
+     "points": 5,
+     "priority": "medium"
+    },
+    {
+     "n": 67,
+     "start": "2027-07-11",
+     "target": "2027-07-15",
+     "points": 5,
+     "priority": "medium"
+    },
+    {
+     "n": 68,
+     "start": "2027-07-16",
+     "target": "2027-07-17",
+     "points": 2,
+     "priority": "high"
+    },
+    {
+     "n": 69,
+     "start": "2027-07-18",
+     "target": "2027-07-23",
+     "points": 6,
+     "priority": "high"
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "n": 71,
+   "level": "story",
+   "start": "2026-11-24",
+   "target": "2026-11-25",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 76,
+   "level": "story",
+   "start": "2026-11-26",
+   "target": "2026-11-26",
+   "points": 1,
+   "priority": "high"
+  },
+  {
+   "n": 80,
+   "level": "story",
+   "start": "2026-11-27",
+   "target": "2026-11-28",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 83,
+   "level": "story",
+   "start": "2026-11-29",
+   "target": "2026-11-30",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 86,
+   "level": "story",
+   "start": "2026-12-01",
+   "target": "2026-12-03",
+   "points": 3,
+   "priority": "critical"
+  },
+  {
+   "n": 91,
+   "level": "story",
+   "start": "2026-12-04",
+   "target": "2026-12-06",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 94,
+   "level": "story",
+   "start": "2026-12-07",
+   "target": "2026-12-11",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 98,
+   "level": "story",
+   "start": "2026-12-12",
+   "target": "2026-12-14",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 103,
+   "level": "story",
+   "start": "2026-12-15",
+   "target": "2026-12-16",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 107,
+   "level": "story",
+   "start": "2026-12-17",
+   "target": "2026-12-18",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 111,
+   "level": "story",
+   "start": "2026-12-19",
+   "target": "2026-12-21",
+   "points": 3,
+   "priority": "critical"
+  },
+  {
+   "n": 115,
+   "level": "story",
+   "start": "2026-12-22",
+   "target": "2026-12-23",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 119,
+   "level": "story",
+   "start": "2026-12-24",
+   "target": "2026-12-26",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 123,
+   "level": "story",
+   "start": "2026-12-27",
+   "target": "2026-12-29",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 127,
+   "level": "story",
+   "start": "2026-12-30",
+   "target": "2027-01-01",
+   "points": 3,
+   "priority": "critical"
+  },
+  {
+   "n": 131,
+   "level": "story",
+   "start": "2027-01-02",
+   "target": "2027-01-06",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 136,
+   "level": "story",
+   "start": "2027-01-07",
+   "target": "2027-01-09",
+   "points": 3,
+   "priority": "critical"
+  },
+  {
+   "n": 141,
+   "level": "story",
+   "start": "2027-01-10",
+   "target": "2027-01-11",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 145,
+   "level": "story",
+   "start": "2027-01-12",
+   "target": "2027-01-14",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 149,
+   "level": "story",
+   "start": "2027-01-15",
+   "target": "2027-01-16",
+   "points": 2,
+   "priority": "critical"
+  },
+  {
+   "n": 153,
+   "level": "story",
+   "start": "2027-01-17",
+   "target": "2027-01-18",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 157,
+   "level": "story",
+   "start": "2027-01-19",
+   "target": "2027-01-20",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 161,
+   "level": "story",
+   "start": "2027-01-21",
+   "target": "2027-01-23",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 165,
+   "level": "story",
+   "start": "2027-01-24",
+   "target": "2027-01-25",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 169,
+   "level": "story",
+   "start": "2027-01-26",
+   "target": "2027-01-27",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 174,
+   "level": "story",
+   "start": "2027-01-28",
+   "target": "2027-01-30",
+   "points": 3,
+   "priority": "critical"
+  },
+  {
+   "n": 175,
+   "level": "story",
+   "start": "2027-01-31",
+   "target": "2027-02-02",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 176,
+   "level": "story",
+   "start": "2027-02-03",
+   "target": "2027-02-05",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 177,
+   "level": "story",
+   "start": "2027-02-06",
+   "target": "2027-02-07",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 178,
+   "level": "story",
+   "start": "2027-02-08",
+   "target": "2027-02-12",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 179,
+   "level": "story",
+   "start": "2027-02-13",
+   "target": "2027-02-15",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 180,
+   "level": "story",
+   "start": "2027-02-16",
+   "target": "2027-02-17",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 181,
+   "level": "story",
+   "start": "2027-02-18",
+   "target": "2027-02-20",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 182,
+   "level": "story",
+   "start": "2027-02-21",
+   "target": "2027-02-23",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 183,
+   "level": "story",
+   "start": "2027-02-24",
+   "target": "2027-02-26",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 184,
+   "level": "story",
+   "start": "2027-02-27",
+   "target": "2027-02-28",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 185,
+   "level": "story",
+   "start": "2027-03-01",
+   "target": "2027-03-02",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 186,
+   "level": "story",
+   "start": "2027-03-03",
+   "target": "2027-03-05",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 187,
+   "level": "story",
+   "start": "2027-03-06",
+   "target": "2027-03-08",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 188,
+   "level": "story",
+   "start": "2027-03-09",
+   "target": "2027-03-11",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 189,
+   "level": "story",
+   "start": "2027-03-12",
+   "target": "2027-03-14",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 190,
+   "level": "story",
+   "start": "2027-03-15",
+   "target": "2027-03-19",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 191,
+   "level": "story",
+   "start": "2027-03-20",
+   "target": "2027-03-22",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 192,
+   "level": "story",
+   "start": "2027-03-23",
+   "target": "2027-03-24",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 193,
+   "level": "story",
+   "start": "2027-03-25",
+   "target": "2027-03-29",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 194,
+   "level": "story",
+   "start": "2027-03-30",
+   "target": "2027-04-01",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 195,
+   "level": "story",
+   "start": "2027-04-02",
+   "target": "2027-04-03",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 196,
+   "level": "story",
+   "start": "2027-04-04",
+   "target": "2027-04-06",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 197,
+   "level": "story",
+   "start": "2027-04-07",
+   "target": "2027-04-08",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 198,
+   "level": "story",
+   "start": "2027-04-09",
+   "target": "2027-04-11",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 199,
+   "level": "story",
+   "start": "2027-04-12",
+   "target": "2027-04-14",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 200,
+   "level": "story",
+   "start": "2027-04-15",
+   "target": "2027-04-17",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 201,
+   "level": "story",
+   "start": "2027-04-18",
+   "target": "2027-04-19",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 202,
+   "level": "story",
+   "start": "2027-04-20",
+   "target": "2027-04-22",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 203,
+   "level": "story",
+   "start": "2027-04-23",
+   "target": "2027-04-27",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 204,
+   "level": "story",
+   "start": "2027-04-28",
+   "target": "2027-04-29",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 205,
+   "level": "story",
+   "start": "2027-04-30",
+   "target": "2027-05-02",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 206,
+   "level": "story",
+   "start": "2027-05-03",
+   "target": "2027-05-05",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 207,
+   "level": "story",
+   "start": "2027-05-06",
+   "target": "2027-05-07",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 208,
+   "level": "story",
+   "start": "2027-05-08",
+   "target": "2027-05-12",
+   "points": 5,
+   "priority": "critical"
+  },
+  {
+   "n": 209,
+   "level": "story",
+   "start": "2027-05-13",
+   "target": "2027-05-15",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 210,
+   "level": "story",
+   "start": "2027-05-16",
+   "target": "2027-05-20",
+   "points": 5,
+   "priority": "medium"
+  },
+  {
+   "n": 211,
+   "level": "story",
+   "start": "2027-05-21",
+   "target": "2027-05-23",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 212,
+   "level": "story",
+   "start": "2027-05-24",
+   "target": "2027-05-26",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 213,
+   "level": "story",
+   "start": "2027-05-27",
+   "target": "2027-05-28",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 214,
+   "level": "story",
+   "start": "2027-05-29",
+   "target": "2027-06-02",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 215,
+   "level": "story",
+   "start": "2027-06-03",
+   "target": "2027-06-07",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 216,
+   "level": "story",
+   "start": "2027-06-08",
+   "target": "2027-06-10",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 217,
+   "level": "story",
+   "start": "2027-06-11",
+   "target": "2027-06-13",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 218,
+   "level": "story",
+   "start": "2027-06-14",
+   "target": "2027-06-16",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 219,
+   "level": "story",
+   "start": "2027-06-17",
+   "target": "2027-06-18",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 220,
+   "level": "story",
+   "start": "2027-06-19",
+   "target": "2027-06-21",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 221,
+   "level": "story",
+   "start": "2027-06-22",
+   "target": "2027-06-24",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 222,
+   "level": "story",
+   "start": "2027-06-25",
+   "target": "2027-06-29",
+   "points": 5,
+   "priority": "critical"
+  },
+  {
+   "n": 223,
+   "level": "story",
+   "start": "2027-06-30",
+   "target": "2027-07-02",
+   "points": 3,
+   "priority": "critical"
+  },
+  {
+   "n": 224,
+   "level": "story",
+   "start": "2027-07-03",
+   "target": "2027-07-05",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 225,
+   "level": "story",
+   "start": "2027-07-06",
+   "target": "2027-07-08",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 226,
+   "level": "story",
+   "start": "2027-07-09",
+   "target": "2027-07-10",
+   "points": 2,
+   "priority": "medium"
+  },
+  {
+   "n": 227,
+   "level": "story",
+   "start": "2027-07-11",
+   "target": "2027-07-13",
+   "points": 3,
+   "priority": "medium"
+  },
+  {
+   "n": 228,
+   "level": "story",
+   "start": "2027-07-14",
+   "target": "2027-07-15",
+   "points": 2,
+   "priority": "low"
+  },
+  {
+   "n": 229,
+   "level": "story",
+   "start": "2027-07-16",
+   "target": "2027-07-17",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 230,
+   "level": "story",
+   "start": "2027-07-18",
+   "target": "2027-07-20",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 231,
+   "level": "story",
+   "start": "2027-07-21",
+   "target": "2027-07-23",
+   "points": 3,
+   "priority": "high"
+  },
+  {
+   "n": 22,
+   "level": "epic",
+   "start": "2026-11-24",
+   "target": "2026-11-25",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 23,
+   "level": "epic",
+   "start": "2026-11-26",
+   "target": "2026-11-26",
+   "points": 1,
+   "priority": "high"
+  },
+  {
+   "n": 24,
+   "level": "epic",
+   "start": "2026-11-27",
+   "target": "2026-11-30",
+   "points": 4,
+   "priority": "high"
+  },
+  {
+   "n": 25,
+   "level": "epic",
+   "start": "2026-12-01",
+   "target": "2026-12-03",
+   "points": 3,
+   "priority": "critical"
+  },
+  {
+   "n": 26,
+   "level": "epic",
+   "start": "2026-12-04",
+   "target": "2026-12-11",
+   "points": 8,
+   "priority": "high"
+  },
+  {
+   "n": 27,
+   "level": "epic",
+   "start": "2026-12-12",
+   "target": "2026-12-16",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 29,
+   "level": "epic",
+   "start": "2026-12-17",
+   "target": "2026-12-18",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 30,
+   "level": "epic",
+   "start": "2026-12-19",
+   "target": "2026-12-26",
+   "points": 8,
+   "priority": "critical"
+  },
+  {
+   "n": 31,
+   "level": "epic",
+   "start": "2026-12-27",
+   "target": "2027-01-06",
+   "points": 11,
+   "priority": "critical"
+  },
+  {
+   "n": 32,
+   "level": "epic",
+   "start": "2027-01-07",
+   "target": "2027-01-11",
+   "points": 5,
+   "priority": "critical"
+  },
+  {
+   "n": 33,
+   "level": "epic",
+   "start": "2027-01-12",
+   "target": "2027-01-16",
+   "points": 5,
+   "priority": "critical"
+  },
+  {
+   "n": 34,
+   "level": "epic",
+   "start": "2027-01-17",
+   "target": "2027-01-20",
+   "points": 4,
+   "priority": "high"
+  },
+  {
+   "n": 35,
+   "level": "epic",
+   "start": "2027-01-21",
+   "target": "2027-01-25",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 36,
+   "level": "epic",
+   "start": "2027-01-26",
+   "target": "2027-01-27",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 38,
+   "level": "epic",
+   "start": "2027-01-28",
+   "target": "2027-02-02",
+   "points": 6,
+   "priority": "critical"
+  },
+  {
+   "n": 39,
+   "level": "epic",
+   "start": "2027-02-03",
+   "target": "2027-02-07",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 40,
+   "level": "epic",
+   "start": "2027-02-08",
+   "target": "2027-02-17",
+   "points": 10,
+   "priority": "high"
+  },
+  {
+   "n": 41,
+   "level": "epic",
+   "start": "2027-02-18",
+   "target": "2027-02-23",
+   "points": 6,
+   "priority": "high"
+  },
+  {
+   "n": 42,
+   "level": "epic",
+   "start": "2027-02-24",
+   "target": "2027-02-28",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 43,
+   "level": "epic",
+   "start": "2027-03-01",
+   "target": "2027-03-05",
+   "points": 5,
+   "priority": "medium"
+  },
+  {
+   "n": 44,
+   "level": "epic",
+   "start": "2027-03-06",
+   "target": "2027-03-11",
+   "points": 6,
+   "priority": "high"
+  },
+  {
+   "n": 46,
+   "level": "epic",
+   "start": "2027-03-12",
+   "target": "2027-03-19",
+   "points": 8,
+   "priority": "high"
+  },
+  {
+   "n": 47,
+   "level": "epic",
+   "start": "2027-03-20",
+   "target": "2027-03-24",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 48,
+   "level": "epic",
+   "start": "2027-03-25",
+   "target": "2027-04-03",
+   "points": 10,
+   "priority": "high"
+  },
+  {
+   "n": 49,
+   "level": "epic",
+   "start": "2027-04-04",
+   "target": "2027-04-08",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 50,
+   "level": "epic",
+   "start": "2027-04-09",
+   "target": "2027-04-14",
+   "points": 6,
+   "priority": "medium"
+  },
+  {
+   "n": 51,
+   "level": "epic",
+   "start": "2027-04-15",
+   "target": "2027-04-19",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 53,
+   "level": "epic",
+   "start": "2027-04-20",
+   "target": "2027-04-29",
+   "points": 10,
+   "priority": "high"
+  },
+  {
+   "n": 54,
+   "level": "epic",
+   "start": "2027-04-30",
+   "target": "2027-05-07",
+   "points": 8,
+   "priority": "high"
+  },
+  {
+   "n": 55,
+   "level": "epic",
+   "start": "2027-05-08",
+   "target": "2027-05-15",
+   "points": 8,
+   "priority": "critical"
+  },
+  {
+   "n": 56,
+   "level": "epic",
+   "start": "2027-05-16",
+   "target": "2027-05-23",
+   "points": 8,
+   "priority": "medium"
+  },
+  {
+   "n": 58,
+   "level": "epic",
+   "start": "2027-05-24",
+   "target": "2027-05-28",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 59,
+   "level": "epic",
+   "start": "2027-05-29",
+   "target": "2027-06-02",
+   "points": 5,
+   "priority": "high"
+  },
+  {
+   "n": 60,
+   "level": "epic",
+   "start": "2027-06-03",
+   "target": "2027-06-10",
+   "points": 8,
+   "priority": "high"
+  },
+  {
+   "n": 61,
+   "level": "epic",
+   "start": "2027-06-11",
+   "target": "2027-06-18",
+   "points": 8,
+   "priority": "high"
+  },
+  {
+   "n": 62,
+   "level": "epic",
+   "start": "2027-06-19",
+   "target": "2027-06-24",
+   "points": 6,
+   "priority": "medium"
+  },
+  {
+   "n": 64,
+   "level": "epic",
+   "start": "2027-06-25",
+   "target": "2027-06-29",
+   "points": 5,
+   "priority": "critical"
+  },
+  {
+   "n": 65,
+   "level": "epic",
+   "start": "2027-06-30",
+   "target": "2027-07-05",
+   "points": 6,
+   "priority": "critical"
+  },
+  {
+   "n": 66,
+   "level": "epic",
+   "start": "2027-07-06",
+   "target": "2027-07-10",
+   "points": 5,
+   "priority": "medium"
+  },
+  {
+   "n": 67,
+   "level": "epic",
+   "start": "2027-07-11",
+   "target": "2027-07-15",
+   "points": 5,
+   "priority": "medium"
+  },
+  {
+   "n": 68,
+   "level": "epic",
+   "start": "2027-07-16",
+   "target": "2027-07-17",
+   "points": 2,
+   "priority": "high"
+  },
+  {
+   "n": 69,
+   "level": "epic",
+   "start": "2027-07-18",
+   "target": "2027-07-23",
+   "points": 6,
+   "priority": "high"
+  },
+  {
+   "n": 21,
+   "level": "initiative",
+   "start": "2026-11-24",
+   "target": "2026-12-16",
+   "points": 23,
+   "priority": "high"
+  },
+  {
+   "n": 28,
+   "level": "initiative",
+   "start": "2026-12-17",
+   "target": "2027-01-27",
+   "points": 42,
+   "priority": "high"
+  },
+  {
+   "n": 37,
+   "level": "initiative",
+   "start": "2027-01-28",
+   "target": "2027-03-11",
+   "points": 43,
+   "priority": "high"
+  },
+  {
+   "n": 45,
+   "level": "initiative",
+   "start": "2027-03-12",
+   "target": "2027-04-19",
+   "points": 39,
+   "priority": "high"
+  },
+  {
+   "n": 52,
+   "level": "initiative",
+   "start": "2027-04-20",
+   "target": "2027-05-23",
+   "points": 34,
+   "priority": "high"
+  },
+  {
+   "n": 57,
+   "level": "initiative",
+   "start": "2027-05-24",
+   "target": "2027-06-24",
+   "points": 32,
+   "priority": "high"
+  },
+  {
+   "n": 63,
+   "level": "initiative",
+   "start": "2027-06-25",
+   "target": "2027-07-23",
+   "points": 29,
+   "priority": "high"
+  }
+ ]
+}

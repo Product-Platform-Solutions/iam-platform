@@ -1,0 +1,16 @@
+name: Epic
+description: A feature-sized piece of the roadmap, made of stories
+labels: ["type:epic"]
+type: Feature
+body:
+  - type: input
+    id: phase
+    attributes: { label: Phase, description: "P0 to P6" }
+    validations: { required: true }
+  - type: textarea
+    id: goal
+    attributes: { label: Goal and done-when }
+    validations: { required: true }
+  - type: textarea
+    id: notes
+    attributes: { label: Dependencies and risks }

@@ -1,0 +1,13 @@
+name: Bug
+description: Something does not work as specified
+labels: ["bug"]
+type: Bug
+body:
+  - type: textarea
+    id: what
+    attributes: { label: What happened, description: "Steps, expected result, actual result" }
+    validations: { required: true }
+  - type: dropdown
+    id: severity
+    attributes: { label: Severity, options: ["Critical (security or data loss)", "High", "Medium", "Low"] }
+    validations: { required: true }
